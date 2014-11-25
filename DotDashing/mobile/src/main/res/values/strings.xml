@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DotDashing</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="debug_enter_message">Enter message</string>
+    <string name="debug_sample_message">sos</string>
+    <string name="debug_morse_on_mobile_button">Morse on mobile</string>
+    <string name="debug_cancel_morse">Cancel morse</string>
+
+</resources>
