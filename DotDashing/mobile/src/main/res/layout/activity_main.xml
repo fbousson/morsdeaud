@@ -22,5 +22,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:id="@+id/debug_morse_cancel" android:text="@string/debug_cancel_morse" />
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/debug_start_wear_app" android:text="@string/debug_start_wear_app" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/debug_morse_on_wear" android:text="@string/debug_morse_on_wear_button" />
+
 
 </LinearLayout>

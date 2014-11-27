@@ -8,5 +8,7 @@
     <string name="debug_sample_message">sos</string>
     <string name="debug_morse_on_mobile_button">Morse on mobile</string>
     <string name="debug_cancel_morse">Cancel morse</string>
+    <string name="debug_morse_on_wear_button">Morse on Wear</string>
+    <string name="debug_start_wear_app">Start Wear app</string>
 
 </resources>

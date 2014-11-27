@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +16,13 @@ import org.crumbleworks.mcdonnough.morsecoder.Encoder;
 import be.fbousson.morsdeaud.common.Morser;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends WearConnectedActivity {
+
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private Morser _morser;
+    private EditText _morseText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +32,13 @@ public class MainActivity extends ActionBarActivity {
         _morser = new Morser(new Encoder( getResources().openRawResource(R.raw.morsecode)), new Morser.MorseStrategy(), (Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
 
 
-        final EditText morseText = (EditText) findViewById(R.id.debug_message_edit);
+        _morseText = (EditText) findViewById(R.id.debug_message_edit);
         Button morseOnMobileButton = (Button) findViewById(R.id.debug_morse_on_mobile_button);
 
         morseOnMobileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _morser.vibrateTextAsMorse(morseText.getText().toString());
+                _morser.vibrateTextAsMorse(getTextToMorse());
             }
         });
 
@@ -45,6 +50,29 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        Button morseOnWearButton = (Button) findViewById(R.id.debug_morse_on_wear);
+//        morseOnMobileButton.setEnabled(mGoogleApiClient.isConnected());
+        morseOnWearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               sendMessage(getTextToMorse());
+            }
+        });
+
+        Button startWearAppButton = (Button) findViewById(R.id.debug_start_wear_app);
+        startWearAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Starting wear app");
+                onStartWearableActivityClick();
+            }
+        });
+
+
+    }
+
+    private String getTextToMorse() {
+        return _morseText.getText().toString();
     }
 
 

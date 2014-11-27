@@ -4,5 +4,7 @@
     <string name="app_name">DotDashing</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
+    <string name="debug_morse_button">Morse</string>
+    <string name="debug_sample_morse">Morse sample</string>
 
 </resources>

@@ -17,18 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE'
-    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //compile 'com.android.support:appcompat-v7:21.0.0'
-//    compile 'org.crumbleworks.mcdonnough.morsecoder:morsecoder:1.0.0'
 
 }
 
