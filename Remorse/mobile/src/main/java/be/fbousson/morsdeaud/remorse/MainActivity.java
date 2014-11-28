@@ -3,12 +3,15 @@ package be.fbousson.morsdeaud.remorse;
 import android.content.Context;
 import android.os.Vibrator;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.crumbleworks.mcdonnough.morsecoder.Encoder;
 
@@ -23,6 +26,7 @@ public class MainActivity extends WearConnectedActivity {
     private Morser _morser;
     private EditText _morseText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,27 @@ public class MainActivity extends WearConnectedActivity {
         _morser = new Morser(new Encoder( getResources().openRawResource(R.raw.morsecode)), new Morser.MorseStrategy(), (Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
 
 
+        final TextView morseTextView = (TextView) findViewById(R.id.debug_message_morse);
+
         _morseText = (EditText) findViewById(R.id.debug_message_edit);
+
+        _morseText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                morseTextView.setText(_morser.encodeToMorse(s.toString()));
+            }
+        });
+
         Button morseOnMobileButton = (Button) findViewById(R.id.debug_morse_on_mobile_button);
 
         morseOnMobileButton.setOnClickListener(new View.OnClickListener() {

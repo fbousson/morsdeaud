@@ -13,6 +13,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:id="@+id/debug_message_edit" android:hint="@string/debug_enter_message"  android:text="@string/debug_sample_message" />
 
+    <TextView
+        android:layout_width="fill_parent" android:padding="10dp"
+        android:layout_height="wrap_content" android:id="@+id/debug_message_morse" />
+
 
     <Button
         android:layout_width="fill_parent"

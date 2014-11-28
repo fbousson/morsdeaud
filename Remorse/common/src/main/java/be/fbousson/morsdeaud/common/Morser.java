@@ -86,15 +86,16 @@ public class Morser {
     }
 
     public void vibrateTextAsMorse(String text){
-        String encodedString = _morseEncoder.encode(text);
-
-
+        String encodedString = encodeToMorse(text);
         encodedString = encodedString.replace("//", "");
         Log.d(TAG, "Encoded String: " + encodedString);
-
         long[] pattern = buildPattern(encodedString, _morseStrategy);
 
         _vibrator.vibrate(pattern, -1);
+    }
+
+    public String encodeToMorse(String text) {
+        return _morseEncoder.encode(text);
     }
 
     private long[] buildPattern(String encodedString, MorseStrategy morseStrategy) {
