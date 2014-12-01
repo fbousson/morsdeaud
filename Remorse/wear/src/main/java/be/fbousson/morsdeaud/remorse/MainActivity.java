@@ -19,6 +19,7 @@ import org.crumbleworks.mcdonnough.morsecoder.Encoder;
 
 import be.fbousson.morsdeaud.common.Morser;
 import be.fbousson.morsdeaud.common.constants.MessagingConstants;
+import be.fbousson.morsdeaud.remorse.application.RemorseWearApplication;
 
 public class MainActivity extends Activity  implements MessageApi.MessageListener,  GoogleApiClient.ConnectionCallbacks {
 
@@ -37,7 +38,7 @@ public class MainActivity extends Activity  implements MessageApi.MessageListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        _morser = new Morser(new Encoder( getResources().openRawResource(R.raw.morsecode)), new Morser.MorseStrategy(), (Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
+        _morser = RemorseWearApplication.getInstance().getMorser();
 
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {

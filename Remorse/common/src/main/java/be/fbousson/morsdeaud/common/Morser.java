@@ -78,7 +78,8 @@ public class Morser {
 
 
 
-    public Morser(Encoder morseEncoder, MorseStrategy morseStrategy, Vibrator vibrator) {
+    public
+    Morser(Encoder morseEncoder, MorseStrategy morseStrategy, Vibrator vibrator) {
         _morseEncoder = morseEncoder;
         _morseStrategy = morseStrategy;
         _vibrator = vibrator;

@@ -11,5 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:id="@+id/debug_morse_button" android:text="@string/debug_morse_button" />
 
+    <android.support.wearable.view.DismissOverlayView
+        android:id="@+id/debug_dismiss_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
 </LinearLayout>
+
+
+

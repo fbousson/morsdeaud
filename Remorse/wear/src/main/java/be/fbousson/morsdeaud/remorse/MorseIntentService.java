@@ -8,6 +8,7 @@ import android.os.Vibrator;
 import org.crumbleworks.mcdonnough.morsecoder.Encoder;
 
 import be.fbousson.morsdeaud.common.Morser;
+import be.fbousson.morsdeaud.remorse.application.RemorseWearApplication;
 
 /**
  * Created by fbousson on 27/11/14.
@@ -26,7 +27,7 @@ public class MorseIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        _morser = new Morser(new Encoder( getResources().openRawResource(R.raw.morsecode)), new Morser.MorseStrategy(), (Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
+        _morser = RemorseWearApplication.getInstance().getMorser();
         String message = intent.getExtras().getString(EXTRA_MESSAGE);
         if(message != null){
             _morser.vibrateTextAsMorse(message);
