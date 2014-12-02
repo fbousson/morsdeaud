@@ -40,6 +40,8 @@ import be.fbousson.morsdeaud.remorse.service.MorseSenderIntentService;
 /**
  * Created by fbousson on 25/11/14.
  */
+@Deprecated
+//Well this was a waste of time. That 'll teach me to copy paste from over engineered Google samples probably written by interns :/
 public class WearConnectedActivity extends ActionBarActivity implements DataApi.DataListener,
         MessageApi.MessageListener, NodeApi.NodeListener, ConnectionCallbacks,
         OnConnectionFailedListener  {
@@ -233,7 +235,7 @@ public class WearConnectedActivity extends ActionBarActivity implements DataApi.
     }
 
 
-    protected  void sendMessageold(final String message){
+    protected  void sendMessageOld(final String message){
 
         new Thread( new Runnable() {
             @Override

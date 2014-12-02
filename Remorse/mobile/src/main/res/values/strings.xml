@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Remorse</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="configure_and_test">Configure and test</string>
     <string name="action_settings">Settings</string>
     <string name="debug_enter_message">Enter message</string>
     <string name="debug_sample_message">sos</string>
@@ -10,5 +10,7 @@
     <string name="debug_cancel_morse">Cancel morse</string>
     <string name="debug_morse_on_wear_button">Morse on Wear</string>
     <string name="debug_start_wear_app">Start Wear app</string>
+    <string name="enable_wear_morse">Enable morse mirroring on your wear device.</string>
+    <string name="enable_mobile_morse">Enable morse mirroring on your handheld device.</string>
 
 </resources>

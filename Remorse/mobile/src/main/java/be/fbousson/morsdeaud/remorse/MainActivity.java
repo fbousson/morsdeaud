@@ -1,21 +1,18 @@
 package be.fbousson.morsdeaud.remorse;
 
-import android.content.Context;
-import android.os.Vibrator;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.crumbleworks.mcdonnough.morsecoder.Encoder;
-
 import be.fbousson.morsdeaud.common.Morser;
+import be.fbousson.morsdeaud.remorse.preferences.UserPreferences;
 
 
 public class MainActivity extends WearConnectedActivity {
@@ -32,12 +29,15 @@ public class MainActivity extends WearConnectedActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        _morser = new Morser(new Encoder( getResources().openRawResource(R.raw.morsecode)), new Morser.MorseStrategy(), (Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
+        _morser = RemorseMobileApplication.getInstance().getMorser();
 
+        String sampleText = getString(R.string.debug_sample_message);
 
         final TextView morseTextView = (TextView) findViewById(R.id.debug_message_morse);
+        morseTextView.setText(_morser.encodeToMorse(sampleText));
 
         _morseText = (EditText) findViewById(R.id.debug_message_edit);
+        _morseText.setText(sampleText);
 
         _morseText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -74,7 +74,6 @@ public class MainActivity extends WearConnectedActivity {
         });
 
         Button morseOnWearButton = (Button) findViewById(R.id.debug_morse_on_wear);
-//        morseOnMobileButton.setEnabled(mGoogleApiClient.isConnected());
         morseOnWearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +90,29 @@ public class MainActivity extends WearConnectedActivity {
             }
         });
 
+        CheckBox mobileCheckbox = (CheckBox) findViewById(R.id.enable_mobile_morse_checkbox);
+
+        mobileCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                UserPreferences.setMobileMorseMessagingEnabled(isChecked);
+            }
+        });
+
+        mobileCheckbox.setChecked(UserPreferences.isMobileMorseMessagingEnabled());
+
+
+        CheckBox wearCheckbox = (CheckBox) findViewById(R.id.enable_wear_morse_checkbox);
+
+        wearCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                UserPreferences.setWearMorseMessagingEnabled(isChecked);
+            }
+        });
+
+        wearCheckbox.setChecked(UserPreferences.isWearMorseMessagingEnabled());
+
 
     }
 
@@ -99,25 +121,25 @@ public class MainActivity extends WearConnectedActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }

@@ -5,13 +5,12 @@
     android:paddingTop="@dimen/activity_vertical_margin" android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    <TextView android:text="@string/configure_and_test" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:id="@+id/debug_message_edit" android:hint="@string/debug_enter_message"  android:text="@string/debug_sample_message" />
+        android:layout_height="wrap_content" android:id="@+id/debug_message_edit" android:hint="@string/debug_enter_message"  />
 
     <TextView
         android:layout_width="fill_parent" android:padding="10dp"
@@ -33,6 +32,15 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:id="@+id/debug_morse_on_wear" android:text="@string/debug_morse_on_wear_button" />
+
+    <CheckBox
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="@string/enable_wear_morse" android:id="@+id/enable_wear_morse_checkbox" />
+
+    <CheckBox
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="@string/enable_mobile_morse" android:id="@+id/enable_mobile_morse_checkbox" />
+
 
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * It seems like I was fired from the naming department, but didn't get the memo.
  * Created by fbousson on 25/11/14.
  */
 public class Morser {
@@ -24,7 +25,7 @@ public class Morser {
 
 
     /**
-     * Default strategy. Can .be overriden
+     * Default strategy. Can be overriden
      */
     public static class MorseStrategy{
         private long dot = 200;      // Length of a Morse Code "dot" in milliseconds
@@ -33,24 +34,30 @@ public class Morser {
         private long medium_gap = 501;   // Length of Gap Between Letters
         private long long_gap = 1001;    // Length of Gap Between Words
 
-        public void setDot(long dot) {
+        //yay for builder pattern.
+        public MorseStrategy setDot(long dot) {
             this.dot = dot;
+            return this;
         }
 
-        public void setDash(long dash) {
+        public MorseStrategy setDash(long dash) {
             this.dash = dash;
+            return this;
         }
 
-        public void setShort_gap(long short_gap) {
+        public MorseStrategy setShortGap(long short_gap) {
             this.short_gap = short_gap;
+            return this;
         }
 
-        public void setMedium_gap(long medium_gap) {
+        public MorseStrategy setMediumGap(long medium_gap) {
             this.medium_gap = medium_gap;
+            return this;
         }
 
-        public void setLong_gap(long long_gap) {
+        public MorseStrategy setLongGap(long long_gap) {
             this.long_gap = long_gap;
+            return this;
         }
     }
 
