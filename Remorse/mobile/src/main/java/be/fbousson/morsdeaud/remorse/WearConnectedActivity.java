@@ -1,5 +1,6 @@
 package be.fbousson.morsdeaud.remorse;
 
+import android.content.Intent;
 import android.content.IntentSender;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import java.util.List;
 import java.util.Set;
 
 import be.fbousson.morsdeaud.common.constants.MessagingConstants;
+import be.fbousson.morsdeaud.remorse.service.MorseSenderIntentService;
 
 /**
  * Created by fbousson on 25/11/14.
@@ -224,8 +226,14 @@ public class WearConnectedActivity extends ActionBarActivity implements DataApi.
         new StartWearableActivityTask().execute();
     }
 
-
     protected  void sendMessage(final String message){
+        Intent intent = new Intent(this, MorseSenderIntentService.class);
+        intent.putExtra(MorseSenderIntentService.EXTRA_MORSE_PLAIN_TEXT, message);
+        startService(intent);
+    }
+
+
+    protected  void sendMessageold(final String message){
 
         new Thread( new Runnable() {
             @Override
