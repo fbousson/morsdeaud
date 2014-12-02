@@ -24,7 +24,8 @@ public class MorseSenderIntentService extends IntentService implements GoogleApi
 
     private static final String TAG = MorseSenderIntentService.class.getSimpleName();
 
-    public static final String EXTRA_MORSE_PLAIN_TEXT = "morsePlainText";
+    public static final String EXTRA_MORSE_PLAIN_TEXT = "MorseSenderIntentService_morsePlainText";
+    public static final String EXTRA_MORSE_SENDER = "MorseSenderIntentService_morseSender";
 
 
 

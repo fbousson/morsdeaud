@@ -34,9 +34,9 @@
         </receiver>
 
 
-        <receiver android:name="be.fbousson.morsdeaud.remorse.broadcastreceiver.MorseReceiver" >
+        <receiver android:name=".broadcastreceiver.MorseReceiver" >
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="be.fbousson.morsdeaud.remorse.broadcastreceiver.MorseReceiver" />
             </intent-filter>
         </receiver>
 

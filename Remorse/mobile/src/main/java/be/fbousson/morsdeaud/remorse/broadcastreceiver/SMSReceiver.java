@@ -4,13 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 
 /**
  * Created by fbousson on 01/12/14.
  */
 public class SMSReceiver extends BroadcastReceiver {
-    private final String DEBUG_TAG = getClass().getSimpleName().toString();
+    private final String TAG = getClass().getSimpleName();
     private static final String ACTION_SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 
     // Retrieve SMS
@@ -20,28 +21,31 @@ public class SMSReceiver extends BroadcastReceiver {
 
         if(action.equals(ACTION_SMS_RECEIVED)){
 
-            String address, str = "";
+            String address = "";
+            String messages = "";
 //            int contactId = -1;
 
             SmsMessage[] msgs = getMessagesFromIntent(intent);
             if (msgs != null) {
                 for (int i = 0; i < msgs.length; i++) {
+                    //Can we get multiple originating addresses in a single intent?
                     address = msgs[i].getOriginatingAddress();
                    // contactId = ContactsUtils.getContactId(mContext, address, "address");
-                    str += msgs[i].getMessageBody().toString();
-                    str += "\n";
+                    messages += msgs[i].getMessageBody().toString();
+                    messages += "\n";
                 }
             }
 
 //            if(contactId != -1){
 //                showNotification(contactId, str);
 //            }
-
-            // ---send a broadcast intent to update the SMS received in the
-            // activity---
+            Log.d(TAG,"Received SMS " + messages);
             Intent broadcastIntent = new Intent();
+            broadcastIntent.putExtra(MorseReceiver.EXTRA_MORSE_PLAIN_TEXT, messages);
+            broadcastIntent.putExtra(MorseReceiver.EXTRA_SENDER, address);
             broadcastIntent.setAction(MorseReceiver.ACTION_MORSE_RECEIVER);
-            broadcastIntent.putExtra(MorseReceiver.EXTRA_MORSE_PLAIN_TEXT, str);
+
+
             context.sendBroadcast(broadcastIntent);
         }
 

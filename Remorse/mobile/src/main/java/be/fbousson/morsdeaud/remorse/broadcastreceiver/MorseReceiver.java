@@ -3,6 +3,7 @@ package be.fbousson.morsdeaud.remorse.broadcastreceiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
@@ -14,7 +15,11 @@ import be.fbousson.morsdeaud.remorse.service.MorseSenderIntentService;
  */
 public class MorseReceiver extends BroadcastReceiver {
 
-    public static final String EXTRA_MORSE_PLAIN_TEXT = "MorsePlainText";
+
+    private static final String TAG = MorseReceiver.class.getSimpleName();
+
+    public static final String EXTRA_MORSE_PLAIN_TEXT = "MorseReceiver_plaintext";
+    public static final String EXTRA_SENDER = "MorseReceiver_plaintext_sender";
 
     public static final String ACTION_MORSE_RECEIVER = "be.fbousson.morsdeaud.remorse.broadcastreceiver.MorseReceiver";
 
@@ -22,10 +27,20 @@ public class MorseReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        String action = intent.getAction();
+        Log.d(TAG, "Entering morse broadcast receiver with action " + action);
 
-        String morsePlainText = intent.getExtras().getString(EXTRA_MORSE_PLAIN_TEXT);
-        Intent morseServiceIntent = new Intent(context, MorseSenderIntentService.class);
-        morseServiceIntent.putExtra(MorseSenderIntentService.EXTRA_MORSE_PLAIN_TEXT, morsePlainText);
-        context.startService(morseServiceIntent);
+        if(intent.getAction().equals(ACTION_MORSE_RECEIVER)){
+
+            String morsePlainText = intent.getExtras().getString(EXTRA_MORSE_PLAIN_TEXT);
+            Log.d(TAG, "Received plain text "  + morsePlainText);
+            String sender = intent.getExtras().getString(EXTRA_SENDER);
+            Log.d(TAG, "Sender " + sender);
+            Intent morseServiceIntent = new Intent(context, MorseSenderIntentService.class);
+            morseServiceIntent.putExtra(MorseSenderIntentService.EXTRA_MORSE_PLAIN_TEXT, morsePlainText);
+            morseServiceIntent.putExtra(MorseSenderIntentService.EXTRA_MORSE_SENDER, sender);
+            context.startService(morseServiceIntent);
+        }
+
     }
 }
