@@ -17,6 +17,8 @@ public class UserPreferences {
     private static final String ENABLE_WEAR_MORSE_MESSAGING = "enableWearMorseMessaging";
     private static final String ENABLE_MOBILE_MORSE_MESSAGING = "enableMobileMorseMessaging";
 
+    private static final String VIBRATION_DELAY = "vibrationDelay";
+
 
     public static void init(final Context app)
     {

@@ -12,5 +12,6 @@
     <string name="debug_start_wear_app">Start Wear app</string>
     <string name="enable_wear_morse">Enable morse mirroring on your wear device.</string>
     <string name="enable_mobile_morse">Enable morse mirroring on your handheld device.</string>
+    <string name="debug_force_crash">Force crash</string>
 
 </resources>

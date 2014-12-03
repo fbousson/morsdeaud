@@ -114,6 +114,14 @@ public class MainActivity extends WearConnectedActivity {
         wearCheckbox.setChecked(UserPreferences.isWearMorseMessagingEnabled());
 
 
+        Button forceCrashButton = (Button) findViewById(R.id.debug_force_crash);
+        forceCrashButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                throw new RuntimeException("Forcing test crash");
+            }
+        });
+
     }
 
     private String getTextToMorse() {

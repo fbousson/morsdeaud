@@ -41,6 +41,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:text="@string/enable_mobile_morse" android:id="@+id/enable_mobile_morse_checkbox" />
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/debug_force_crash" android:text="@string/debug_force_crash" />
 
 
 </LinearLayout>

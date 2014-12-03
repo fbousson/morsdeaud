@@ -7,6 +7,8 @@ import android.util.Log;
 
 import org.crumbleworks.mcdonnough.morsecoder.Encoder;
 
+import be.fbousson.morsdeaud.common.crashlogging.CrashLoggingUtility;
+
 /**
  * Created by fbousson on 02/12/14.
  */
@@ -22,6 +24,8 @@ public class RemorseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        CrashLoggingUtility.trackCrash(this, "not@ready.com");
         _instance = this;
         _morser = new Morser(new Encoder( getResources().openRawResource(R.raw.morsecode)), new Morser.MorseStrategy(), (Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
     }
