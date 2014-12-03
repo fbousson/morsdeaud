@@ -31,7 +31,7 @@ public class RemorseListenerService extends WearableListenerService {
        Log.d(TAG, "Message Received: " + messageEvent);
        final String messagePath =  messageEvent.getPath();
         if(messagePath.equalsIgnoreCase( MessagingConstants.START_ACTIVITY_PATH ) ) {
-            Intent intent = new Intent( this, MainActivity.class );
+            Intent intent = new Intent( this, VoiceToMorseActivity.class );
             intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
             startActivity( intent );
         }
