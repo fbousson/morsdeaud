@@ -40,7 +40,7 @@ import be.fbousson.morsdeaud.remorse.service.MorseSenderIntentService;
 /**
  * Created by fbousson on 25/11/14.
  */
-@Deprecated
+//@Deprecated
 //Well this was a waste of time. That 'll teach me to copy paste from over engineered Google samples probably written by interns :/
 public class WearConnectedActivity extends ActionBarActivity implements DataApi.DataListener,
         MessageApi.MessageListener, NodeApi.NodeListener, ConnectionCallbacks,
